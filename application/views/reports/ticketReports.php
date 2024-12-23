@@ -237,7 +237,8 @@
                 {"data": "created_by_name"}, 
                 {"data": "ticket_priority"},  
                 {"data": "status"},  
-                { data: "resolve_date", render: $.fn.dataTable.render.moment( 'DD-MM-YYYY' ) }, 
+                { data: "updated_on", render: $.fn.dataTable.render.moment( 'DD-MM-YYYY' ) }, 
+                // {"data": "updated_on"},
                 {"data": "resolve_time"} 
         
         
