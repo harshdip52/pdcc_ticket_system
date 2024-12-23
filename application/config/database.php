@@ -55,11 +55,8 @@ $query_builder = TRUE;
 
 
 $db['default'] = array(
-	'dsn'      => '',
-	// 'hostname' => '10.1.46.63',
-	// 'username' => 'pdccbrd',
-	// 'password' => 'pd((brd$#@!1',
-	'hostname' => 'localhost',
+	'hostname' => '192.168.0.123',
+	// 'hostname' => '103.118.16.16',
 	'username' => 'pdcc',
 	'password' => 'pdcc123',
 	'database' => 'ticket_support',

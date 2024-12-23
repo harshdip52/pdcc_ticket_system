@@ -239,9 +239,7 @@
                 {"data": "status"},  
                 { data: "updated_on", render: $.fn.dataTable.render.moment( 'DD-MM-YYYY' ) }, 
                 // {"data": "updated_on"},
-                {"data": "resolve_time"} 
-        
-        
+                {"data": "resolve_time"}   
 
       ]
     });

@@ -246,7 +246,7 @@
           sub_cat_id: selected_sub_category_id,
         }
       },
-      "pageLength": 25,
+      "pageLength": 10,
       buttons: [{
         extend: 'collection',
         text: 'Export',

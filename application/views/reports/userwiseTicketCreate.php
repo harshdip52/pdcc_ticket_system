@@ -69,14 +69,10 @@
                 <div class="col-md-1 input-padd">
                     <label>&nbsp;<br></label><br>
                     <button class="btn btn-info panel-title btn-sm" id="search" name="search" onclick="SearchData()">Search</button>
-
                 </div>
-
-
             </div>
 
             <div class="row">
-
                 <div class="table-responsive">
                     <table id="eventsTable"
                         class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
@@ -113,7 +109,6 @@
         <div class="panel-heading" style="background-color: #0e6d8c;">
             <h4 class="panel-title" style="visibility: hidden;">Total Ticket List</h4>
         </div>
-
     </div>
 </div>
 
@@ -175,7 +170,7 @@
                     status: status,
                 }
             },
-            "pageLength": 25,
+            "pageLength": 10,
             buttons: [{
                 extend: 'collection',
                 text: 'Export',
@@ -257,10 +252,11 @@
                 {
                     "data": "status"
                 },
-                {
-                    data: "resolve_date",
-                    render: $.fn.dataTable.render.moment('DD-MM-YYYY')
-                },
+                // {
+                //     data: "resolve_date",
+                //     render: $.fn.dataTable.render.moment('DD-MM-YYYY')
+                // },
+                { data: "updated_on", render: $.fn.dataTable.render.moment( 'DD-MM-YYYY' ) }, 
                 {
                     "data": "resolve_time"
                 }
@@ -341,7 +337,7 @@
     function getAllUsersSupport() {
         loader();
         //$.getJSON("<?php echo base_url(); ?>Ajax/getAllUsers/", function(data) {
-            $.getJSON("<?php echo base_url(); ?>Reports/getAllCbsSupportHelpDeskUsers", function(data) {
+        $.getJSON("<?php echo base_url(); ?>Reports/getAllCbsSupportHelpDeskUsers", function(data) {
             var stringToAppend = "<option selected value=''>-- Select User --</option> ";
             $.each(data, function(key, val) {
                 stringToAppend += "<option value='" + val.user_id + "'>" + val.name + "</option>";
