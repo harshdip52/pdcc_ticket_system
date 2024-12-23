@@ -1,0 +1,121 @@
+
+<?PHP
+include '../../config.php';
+error_reporting(0);
+require_once "Classes/PHPExcel.php";
+error_reporting(0);
+ 
+if (!empty($_FILES['uploaded_file'])) 
+{
+    $path = "uploads/";
+    $path = $path.date('Y-m-d').time().basename($_FILES['uploaded_file']['name']);
+    $fileName = basename($_FILES['uploaded_file']['name']);
+    if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) 
+    {
+        $tmpfname = $path;
+        $excelReader = PHPExcel_IOFactory::createReaderForFile($tmpfname);
+        $excelObj = $excelReader->load($tmpfname);
+        $worksheet = $excelObj->getSheet(0);
+         $lastRow = $worksheet->getHighestRow();
+        for ($row = 2; $row <= $lastRow; $row++) 
+        {
+           $registrar_code = $worksheet->getCell('B' . $row)->getValue();
+            $registrar_name = $worksheet->getCell('C' . $row)->getValue();
+            $agency_code = $worksheet->getCell('D' . $row)->getValue();
+            $agency_name = $worksheet->getCell('E' . $row)->getValue();
+            $station_id = $worksheet->getCell('F' . $row)->getValue();
+            $centre_summary = $worksheet->getCell('G' . $row)->getValue();
+            $contact_person = $worksheet->getCell('H' . $row)->getValue();
+
+
+            $excel_date = $worksheet->getCell('I' . $row)->getValue(); 
+            $unix_date = ($excel_date - 25569) * 86400;
+            $excel_date = 25569 + ($unix_date / 86400);
+            $unix_date = ($excel_date - 25569) * 86400;
+            $update_date= gmdate("Y-m-d", $unix_date); 
+
+
+            $center_type = $worksheet->getCell('J' . $row)->getValue();
+            $total_enrolments_30day = $worksheet->getCell('K' . $row)->getValue();
+            $total_updates_30day = $worksheet->getCell('L' . $row)->getValue();
+            $total_enrolments_last_day = $worksheet->getCell('M' . $row)->getValue();
+            $total_updates_last_day = $worksheet->getCell('N' . $row)->getValue();
+            
+
+             $stmt = $pdo->prepare("SELECT contact_person,update_date FROM `daily_enrollment` WHERE update_date='$update_date' AND contact_person='$contact_person'"); 
+            $stmt->execute();
+            $resp = $stmt->fetch(PDO::FETCH_ASSOC);  
+            
+            if (empty($resp)) 
+            {
+                onPerformAction($pdo,$registrar_code,$registrar_name,$agency_code,$agency_name,$station_id,$centre_summary,$contact_person,$update_date,$center_type,$total_enrolments_30day,$total_updates_30day,$total_enrolments_last_day,$total_updates_last_day);
+            }
+
+            
+ 
+
+            if ($row == $lastRow) 
+            {
+                echo"<script>alert('File Upload Successfully');window.location.href = '../adddailyenrollment.php';</script>";
+                redirect("../adddailyenrollment.php");
+            }
+             
+        }
+    } 
+    else 
+    {
+        echo"<script>alert('There was an error uploading the file, please try again!');window.location.href = '../adddailyenrollment.php';</script>"; 
+    }
+}
+
+function onPerformAction($pdo,$registrar_code,$registrar_name,$agency_code,$agency_name,$station_id,$centre_summary,$contact_person,$update_date,$center_type,$total_enrolments_30day,$total_updates_30day,$total_enrolments_last_day,$total_updates_last_day)
+{  
+    try{
+
+    $sql = "INSERT INTO daily_enrollment(registrar_code,registrar_name,agency_code,agency_name,station_id,centre_summary,contact_person,update_date,center_type,total_enrolments_30day,total_updates_30day,total_enrolments_last_day,total_updates_last_day)  VALUES (:registrar_code,:registrar_name,:agency_code,:agency_name,:station_id,:centre_summary,:contact_person,:update_date,:center_type,:total_enrolments_30day,:total_updates_30day,:total_enrolments_last_day,:total_updates_last_day);";
+
+    $query = $pdo->prepare($sql);
+    $query->bindParam(':registrar_code', $registrar_code, PDO::PARAM_STR);
+    $query->bindParam(':registrar_name', $registrar_name, PDO::PARAM_STR);
+    $query->bindParam(':agency_code', $agency_code, PDO::PARAM_STR);
+    $query->bindParam(':agency_name', $agency_name, PDO::PARAM_STR);
+    $query->bindParam(':station_id', $station_id, PDO::PARAM_STR);
+    $query->bindParam(':centre_summary', $centre_summary, PDO::PARAM_STR);
+    $query->bindParam(':contact_person', $contact_person, PDO::PARAM_STR);
+    $query->bindParam(':update_date', $update_date, PDO::PARAM_STR);
+    $query->bindParam(':center_type', $center_type, PDO::PARAM_STR);
+    $query->bindParam(':total_enrolments_30day', $total_enrolments_30day, PDO::PARAM_STR);
+    $query->bindParam(':total_updates_30day', $total_updates_30day, PDO::PARAM_STR);
+    $query->bindParam(':total_enrolments_last_day', $total_enrolments_last_day, PDO::PARAM_STR);
+    $query->bindParam(':total_updates_last_day', $total_updates_last_day, PDO::PARAM_STR); 
+    $result = $query->execute();
+    if ($result) {
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }}
+
+catch(Exception $e) {
+
+  echo "<script>alert('This file Content may be aleardy uploaded.');window.location.href = '../adddailyenrollment.php';</script>";
+
+}
+
+}
+
+ 
+
+function redirect($url)
+{
+    ob_start();
+    header('Location: ' . $url);
+    ob_end_flush();
+    die();
+}
+
+  
+?>

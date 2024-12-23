@@ -1,0 +1,11 @@
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Visitor extends CI_Controller
+{
+    public function index()
+    {
+        return view('welcome_message');
+        echo 1;
+    }
+}

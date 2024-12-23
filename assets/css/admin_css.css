@@ -1,0 +1,15 @@
+.widget-stats .stats-info h4 {
+        font-size: 18px;
+        color:white !important;
+	}
+
+	.widget-stats .stats-link {
+	    position: absolute;
+	    bottom: 15px;
+	    right: 12px;
+	    width: 100%;
+	}
+	
+	.widget.widget-stats{
+		    min-height: 80px;
+	}
