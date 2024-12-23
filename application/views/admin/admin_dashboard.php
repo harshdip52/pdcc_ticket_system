@@ -37,7 +37,7 @@
              
             <?php if($login_role==1) {?>
             <div class="col-lg-3 col-md-6">
-              <div class="widget widget-stats bg-gradient-black">
+              <div class="widget widget-stats bg-grey-darker">
                 <div class="stats-icon"><i class="fa fa-book"></i></div>
                 <div class="stats-info">
                   <h4>User</h4>

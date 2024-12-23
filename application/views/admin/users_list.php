@@ -146,7 +146,7 @@
                 "url": "<?php echo base_url(); ?>Ajax/getAllUsers/",
                 dataSrc: '',
             },
-            "pageLength": 25,
+            "pageLength": 10,
             buttons: [{
                 extend: 'collection',
                 text: 'Export',

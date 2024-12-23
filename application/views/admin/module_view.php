@@ -97,7 +97,7 @@
             "processing": true,
             "serverSide": true,
             "order": [],
-            "pageLength": 15,
+            "pageLength": 10,
             "lengthMenu": [
                 [5, 25, 50, 100, -1],
                 [5, 25, 50, 100, "All"]

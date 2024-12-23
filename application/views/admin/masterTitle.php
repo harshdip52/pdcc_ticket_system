@@ -54,7 +54,7 @@
                 "url": "<?php echo base_url();?>Admin/getTcketTitle/",
                 dataSrc: '', 
             },
-            "pageLength": 25,
+            "pageLength": 10,
             buttons: [
             {
                 extend: 'collection',

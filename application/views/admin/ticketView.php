@@ -1,8 +1,8 @@
 <div class="sidebar-bg hide_in_print"></div>
 <div id="content" class="content">
   <ol class="breadcrumb pull-right">
-    <li class="breadcrumb-item "><a href="<?= base_url(); ?>Inventory"> Inventory Dashboard</a></li>
-    <li class="breadcrumb-item "><a href="<?= base_url(); ?>Inventory/assign_inventory"> Inventory List</a></li>
+    <li class="breadcrumb-item "><a href="<?= base_url(); ?>admin">Dashboard</a></li>
+    <li class="breadcrumb-item "><a href="<?= base_url(); ?>admin/ticketDashboard">ticketDashboard</a></li>
     <li class="breadcrumb-item active">View Ticket </li>
   </ol>
   <h1 class="page-header">View Ticket </h1>

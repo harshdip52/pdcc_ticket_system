@@ -53,7 +53,7 @@
                 "url": "<?php echo base_url();?>Ajax/getAllSubCategoryList/",
                 dataSrc: '', 
             },
-            "pageLength": 25,
+            "pageLength": 10,
             buttons: [
             {
                 extend: 'collection',

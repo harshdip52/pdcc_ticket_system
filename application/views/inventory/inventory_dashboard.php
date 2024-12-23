@@ -59,7 +59,7 @@
           </div>
           <?php  }?>
           <div class="col-lg-3 col-md-6">
-              <div class="widget widget-stats bg-gradient-black">
+              <div class="widget widget-stats bg-grey-darker">
                   <div class="stats-icon"><i class="fa fa-edit"></i></div>
                   <div class="stats-info">
                       <h4>Assigned Inventory List</h4>
@@ -83,7 +83,7 @@
           </div>
 
           <div class="col-lg-3 col-md-6">
-              <div class="widget widget-stats bg-warning">
+              <div class="widget widget-stats bg-grey-darker">
                   <div class="stats-icon"><i class="fa fa-edit"></i></div>
                   <div class="stats-info">
                       <h4>Dead Inventory  List</h4>
@@ -94,7 +94,7 @@
               </div>
           </div>
           <div class="col-lg-3 col-md-6">
-              <div class="widget widget-stats bg-warning">
+              <div class="widget widget-stats bg-grey-darker">
                   <div class="stats-icon"><i class="fa fa-edit"></i></div>
                   <div class="stats-info">
                       <h4>Repair Inventory  List</h4>
@@ -106,7 +106,7 @@
           </div>
 
           <div class="col-lg-3 col-md-6">
-              <div class="widget widget-stats bg-info">
+              <div class="widget widget-stats bg-grey-darker">
                   <div class="stats-icon"><i class="fa fa-edit"></i></div>
                   <div class="stats-info">
                       <h4>Dead / Movement / Repair Logs</h4>

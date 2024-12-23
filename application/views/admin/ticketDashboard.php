@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="col-lg-3 col-md-6">
-      <div class="widget widget-stats bg-gradient-black">
+      <div class="widget widget-stats bg-grey-darker">
         <div class="stats-icon"><i class="fa fa-user"></i></div>
         <div class="stats-info">
           <h4>New Tickets</h4>
@@ -365,7 +365,7 @@
           sel_date: sel_date,
         }
       },
-      "pageLength": 25,
+      "pageLength": 10,
       buttons: [{
         extend: 'collection',
         text: 'Export',

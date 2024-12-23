@@ -164,7 +164,7 @@
             // branch_id: branch_id
           }
         },
-        "pageLength": 25,
+        "pageLength": 10,
         buttons: [{
           extend: 'collection',
           text: 'Export',

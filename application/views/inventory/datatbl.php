@@ -102,7 +102,7 @@
                     sub_cat_id: sub_cat_id, 
                 }
             },
-            "pageLength": 25,
+            "pageLength": 10,
             buttons: [
             {
                 extend: 'collection',

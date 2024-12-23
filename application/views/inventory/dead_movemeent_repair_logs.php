@@ -140,7 +140,7 @@
                                     action_status: action_status
                                 }
                             },
-                            "pageLength": 25,
+                            "pageLength": 10,
                             buttons: [{
                                 extend: 'collection',
                                 text: 'Export',
