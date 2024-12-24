@@ -976,6 +976,8 @@ class Admin extends  CI_Controller
     }
     public function totalTicket()
     {
+        // printData($_SESSION);die;
+        // login_role
         $this->load->view('header/header');
         $this->load->view('admin/totalTicket');
         $this->load->view('footer/footer');

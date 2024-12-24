@@ -206,9 +206,9 @@
             "data": "ticket_no",
             "render": function(data, type, row, meta) {
               if (type === 'display') {
-                if(row.status != 'Resolved'){
+                if (row.status != 'Resolved') {
                   data = '<a class="link" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')" style="cursor:pointer;color:black;">' + row.ticket_no + '</a>';
-                }else{
+                } else {
                   data = row.ticket_no;
                 }
               }
@@ -254,11 +254,14 @@
           {
             "data": "ticket_id",
             "render": function(data, type, row, meta) {
-
+              var login_user_role = "<?php echo json_encode($this->session->userdata('login_role')) ?>";
+              var role = JSON.parse(JSON.stringify(login_user_role));
               if (type === 'display') {
                 data = '<a type="button" class="btn btn-primary btn-sm" href="<?= base_url(); ?>admin/ticketView/' + data + '">View / Reply</a>';
-                if(row.status != 'Resolved'){
-                  data += '<button type="button" class="btn btn-info btn-sm" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')">Closed Ticket</button>';
+                if (role == 1) {
+                  if (row.status != 'Resolved') {
+                    data += '<button type="button" class="btn btn-info btn-sm" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')">Closed Ticket</button>';
+                  }
                 }
               }
               return data;
