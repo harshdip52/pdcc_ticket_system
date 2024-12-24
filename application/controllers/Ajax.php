@@ -447,7 +447,9 @@ class Ajax extends  CI_Controller
         echo json_encode($getUsers); 
     }
     public function getAllUsersSupport()
-    {   $role=5;
+    {   
+        // $role=5;
+        $role = [5,9];
         $getUsers=$this->AjaxModel->getUsersByRole($role); 
         echo json_encode($getUsers);
     }

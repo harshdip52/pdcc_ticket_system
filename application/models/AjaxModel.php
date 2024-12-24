@@ -947,7 +947,8 @@ class AjaxModel extends CI_Model
     }
     public function getUsersByRole($role)
     {
-        $this->db->where('role', $role);
+        // $this->db->where('role', $role);
+        $this->db->where_in('role', $role);
         return $this->db->get('tbl_mst_users')->result_array();
     }
     public function getAssignInventryList($branch_id, $cat_id, $sub_cat_id, $brand_id)
