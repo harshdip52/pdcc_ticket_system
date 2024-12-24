@@ -44,6 +44,7 @@
               <th class="text-nowrap">Ticket Title</th>
               <th class="text-nowrap">Date</th>
               <th class="text-nowrap">Close Date</th>
+              <th class="text-nowrap">Close Time</th>
               <th class="text-nowrap">Status</th>
               <th class="text-nowrap">Ticket Priority</th>
               <th class="text-nowrap">Action</th>
@@ -206,15 +207,16 @@
             "data": "ticket_no",
             "render": function(data, type, row, meta) {
               if (type === 'display') {
-                if(row.status != 'Resolved'){
+                if (row.status != 'Resolved') {
                   data = '<a class="link" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')" style="cursor:pointer;color:black;">' + row.ticket_no + '</a>';
-                }else{
+                } else {
                   data = row.ticket_no;
                 }
               }
               return data;
             }
           },
+         
           {
             "data": "name"
           },
@@ -245,6 +247,10 @@
             },
           },
           {
+            data: "resolve_time",
+            name: "resolve_time"
+          },
+          {
             "data": "status"
           },
           {
@@ -257,7 +263,7 @@
 
               if (type === 'display') {
                 data = '<a type="button" class="btn btn-primary btn-sm" href="<?= base_url(); ?>admin/ticketView/' + data + '">View / Reply</a>';
-                if(row.status != 'Resolved'){
+                if (row.status != 'Resolved') {
                   data += '<button type="button" class="btn btn-info btn-sm" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')">Closed Ticket</button>';
                 }
               }

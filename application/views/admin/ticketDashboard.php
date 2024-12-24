@@ -25,7 +25,7 @@
 
     <?php //if ($login_role == 1) { 
     // echo $login_role;die;
-     if (in_array(trim($login_role), admin_permission())) {?>
+    if (in_array(trim($login_role), admin_permission())) { ?>
 
       <!-- this block Display only Branch manager And Help Desk -->
 
@@ -226,6 +226,7 @@
             <th class="text-nowrap">Ticket Title</th>
             <th class="text-nowrap">Date</th>
             <th class="text-nowrap">Close Date</th>
+            <th class="text-nowrap">Close Time</th>
             <th class="text-nowrap">Status</th>
             <th class="text-nowrap">Ticket Priority</th>
             <th class="text-nowrap">Action</th>
@@ -346,7 +347,7 @@
   });
 
 
-  function callDatatable(taluka_id, zone_id, branch_id,sel_date) {
+  function callDatatable(taluka_id, zone_id, branch_id, sel_date) {
     loader();
     var myTable = $('#eventsTable').DataTable({
       dom: "Bfrtip",
@@ -408,51 +409,56 @@
         },
         {
           "data": "name",
-          render:function(data,type,row){
-              return row.name.toUpperCase();
+          render: function(data, type, row) {
+            return row.name.toUpperCase();
           }
         },
         {
           "data": "taluka_name",
-          render:function(data,type,row){
-              return row.taluka_name.toUpperCase();
+          render: function(data, type, row) {
+            return row.taluka_name.toUpperCase();
           }
-          
+
         },
 
         {
           "data": "zone_name",
-          render:function(data,type,row){
-              return row.zone_name.toUpperCase();
-          }          
-          
+          render: function(data, type, row) {
+            return row.zone_name.toUpperCase();
+          }
+
         },
         {
           "data": "branch_name",
-          render:function(data,type,row){
-              return row.branch_name.toUpperCase();
-          }           
-          
+          render: function(data, type, row) {
+            return row.branch_name.toUpperCase();
+          }
+
         },
         {
           "data": "ticket_title",
-          render:function(data,type,row){
-              return row.ticket_title.toUpperCase();
+          render: function(data, type, row) {
+            return row.ticket_title.toUpperCase();
           }
         },
         {
           data: "created_on",
           render: $.fn.dataTable.render.moment('DD-MM-YYYY')
         },
-        {"data": "status",
-                    "render": function ( data, type, row ){
-                        if(row["status"] == "Resolved"){
-                            return row['updated_on'];
-                        }else{
-                            return '';
-                        }
-                    },
-                 },
+        {
+          "data": "status",
+          "render": function(data, type, row) {
+            if (row["status"] == "Resolved") {
+              return row['updated_on'];
+            } else {
+              return '';
+            }
+          },
+        },
+        {
+          data: "resolve_time",
+          name: "resolve_time"
+        },
         {
           "data": "status"
         },
@@ -528,7 +534,7 @@
     var branch_id = $("#branch_id").val();
     var zone_id = $("#zone_id").val();
     var sel_date = $("#sel_date").val();
-    callDatatable(taluka_id, zone_id, branch_id,sel_date);
+    callDatatable(taluka_id, zone_id, branch_id, sel_date);
     // body...
   }
 </script>
