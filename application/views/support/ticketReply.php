@@ -78,8 +78,8 @@
         </div>
         <?php if ($ticket['status'] == "Resolved") { ?>
           <div class="col-md-6 input-padd" style="font-size: 16px;">
-            <label>Ticket Close Date :- </label>
-            <?= $ticket['updated_on'] ?>
+            <label>Ticket Close Date & Time:- </label>
+            <?= $ticket['updated_on']." ". $ticket['resolve_time'] ?>
           </div>
         <?php } ?>
         <div class="col-md-12 input-padd" style="font-size: 16px;">
