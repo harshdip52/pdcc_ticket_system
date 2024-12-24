@@ -129,7 +129,7 @@
       </div>
     </div>
 
-    
+
 
   </div>
   <hr style="color: black; background: black; height: 3px;">
@@ -174,6 +174,7 @@
             <th class="text-nowrap">Ticket Title</th>
             <th class="text-nowrap">Date</th>
             <th class="text-nowrap">Close Date</th>
+            <th class="text-nowrap">Close Time</th>
             <th class="text-nowrap">Status</th>
             <th class="text-nowrap">Ticket Priority</th>
             <th class="text-nowrap">Action</th>
@@ -276,15 +277,21 @@
           data: "created_on",
           render: $.fn.dataTable.render.moment('DD-MM-YYYY')
         },
-        {"data": "status",
-                    "render": function ( data, type, row ){
-                        if(row["status"] == "Resolved"){
-                            return row['updated_on'];
-                        }else{
-                            return '';
-                        }
-                    },
-                 },
+        
+        {
+          "data": "status",
+          "render": function(data, type, row) {
+            if (row["status"] == "Resolved") {
+              return row['updated_on'];
+            } else {
+              return '';
+            }
+          },
+        },
+        {
+          data: "resolve_time",
+          name: "resolve_time"
+        },
         {
           "data": "status"
         },
@@ -320,20 +327,20 @@
       $("#branch_id").html(stringToAppend);
     }); */
     $.ajax({
-        url: "<?php echo base_url(); ?>Ajax/getBranchSupportAjax/", //the page containing php script
-        type: "post",
-        dataType: 'json',
-        data: {
-          zone_id: zone_id
-        },
-        success: function(data) {
-          var stringToAppend = "<option disabled selected value=''>-- Select Branch --</option> ";
-          $.each(data, function(key, val) {
-            stringToAppend += "<option value='" + val.branch_id + "'>" + val.branch_name + "</option>";
-          });
-          $("#branch_id").html(stringToAppend);         
-        }
-      });
+      url: "<?php echo base_url(); ?>Ajax/getBranchSupportAjax/", //the page containing php script
+      type: "post",
+      dataType: 'json',
+      data: {
+        zone_id: zone_id
+      },
+      success: function(data) {
+        var stringToAppend = "<option disabled selected value=''>-- Select Branch --</option> ";
+        $.each(data, function(key, val) {
+          stringToAppend += "<option value='" + val.branch_id + "'>" + val.branch_name + "</option>";
+        });
+        $("#branch_id").html(stringToAppend);
+      }
+    });
   }
 
   function getZone(taluka_id) {

@@ -264,15 +264,10 @@
               var role = JSON.parse(JSON.stringify(login_user_role));
               if (type === 'display') {
                 data = '<a type="button" class="btn btn-primary btn-sm" href="<?= base_url(); ?>admin/ticketView/' + data + '">View / Reply</a>';
-<<<<<<< HEAD
-                if (row.status != 'Resolved') {
-                  data += '<button type="button" class="btn btn-info btn-sm" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')">Closed Ticket</button>';
-=======
                 if (role == 1) {
                   if (row.status != 'Resolved') {
                     data += '<button type="button" class="btn btn-info btn-sm" onClick="TicketClosedByAdmin(' + row.ticket_id + ',' + row.ticket_no + ')">Closed Ticket</button>';
                   }
->>>>>>> 8a9558cbbdccaf98e84867eee82a31f2e2e24019
                 }
               }
               return data;

@@ -29,6 +29,7 @@
                <th class="text-nowrap">Branch</th>
                <th class="text-nowrap">Ticket Title</th>
                <th class="text-nowrap">Date</th>
+               <th class="text-nowrap">Close Time</th>
                <th class="text-nowrap">Status</th>
                <th class="text-nowrap">Ticket Priority</th>
                <th class="text-nowrap">Action</th>
@@ -173,6 +174,10 @@
            {
              data: "created_on",
              render: $.fn.dataTable.render.moment('DD-MM-YYYY')
+           },
+           {
+             data: "resolve_time",
+             name: "resolve_time"
            },
            {
              "data": "status"
